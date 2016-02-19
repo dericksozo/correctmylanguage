@@ -1,0 +1,129 @@
+body {
+    background-color: #D1DAD9;
+
+    width: 100%;
+
+    font-family: YuGothic, 'Yu Gothic', "游ゴシック体", "游ゴシック", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Osaka, "MS PGothic", Arial, Helvetica, Verdana, sans-serif;
+    line-height: 1.266;
+    font-size: 100%;
+}
+
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: #80878B;
+}
+
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: #80878B;
+   opacity:  1;
+}
+
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: #80878B;
+   opacity:  1;
+}
+
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: #80878B;
+}
+
+:placeholder-shown { /* Standard (https://drafts.csswg.org/selectors-4/#placeholder) */
+  color: #80878B;
+}
+
+/* Default spacing for every element based on golden ratio. */
+*+* {
+    margin-top: 1.618rem;
+}
+
+/* Start Header */
+.logo {
+    font-family: Arial, sans-serif;
+    font-weight: normal;
+    font-size: 1rem;
+    line-height: 1.4;
+    color: #23A087;
+}
+
+.message {
+    color: #6B7073;
+}
+/* End Header */
+
+/* Start Footer */
+footer > p {
+    color: #6B7073;
+    font-family: Arial, sans-serif;
+    font-size: 1rem;
+    line-height: 1.4;
+}
+/* End Footer */
+
+/* Video */
+.video {
+    position: relative;
+
+	padding-bottom: 56.25%; /* 16:9 */
+
+	height: 0;
+}
+
+.video > iframe {
+    position: absolute;
+	top: 0;
+	left: 0;
+
+	width: 100%;
+	height: 100%;
+}
+/* End Video */
+
+/* Correct Form */
+
+.correctForm {
+    overflow: hidden; /* Clearfix */
+    clear: both;
+}
+
+.correctForm--textArea {
+    /* Reset */
+    background: none;
+    resize: none;
+    border: none;
+
+    border-radius: 3px;
+
+    color: #373B3A;
+    background-color: #B6BEBD;
+
+    width: 100%;
+}
+
+.correctForm--callToAction {
+    float: right;
+}
+/* End Correct Form */
+
+/* Multiple Styles */
+.button {
+    /* Reset */
+    background: none;
+    border: none;
+
+    border-radius: 3px;
+
+    background-color: #23A087;
+    color: #D6E0DF;
+
+    font-size: 1rem;
+    font-weight: bold;
+
+    padding: 0.75rem 2rem;
+}
+/* End Button */
+
+/* Multiple Styles */
+header,
+.correctForm {
+    padding: 0 14px;
+}
+/* End Multiple Styles */
