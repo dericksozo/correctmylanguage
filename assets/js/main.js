@@ -13,5 +13,9 @@
     }
 
     autosize($(".js-correctform-textarea"));
-    
+
+    $(".js-correct-form").submit(function (e) {
+        alert("Just submitted the form.");
+        e.preventDefault();
+    });
 }());
