@@ -121,6 +121,13 @@ footer > p {
 
     padding: 0.5rem 2rem;
 }
+
+.button[data-state~="submitting"] {
+    background-color: #717D7B;
+    color: #404847;
+    cursor: not-allowed;
+}
+
 /* End Button */
 
 /* Multiple Styles */

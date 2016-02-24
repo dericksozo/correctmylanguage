@@ -14,8 +14,18 @@
 
     autosize($(".js-correctform-textarea"));
 
+    // TODO: Add a check to the form to see if there is at least one character in there and don't show the form unelss there is.
+
+
+    // Submitting the form.
     $(".js-correct-form").submit(function (e) {
-        alert("Just submitted the form.");
         e.preventDefault();
+        var $submitButton = $(".js-correctform-submitbutton");
+
+        $submitButton.attr("data-state", "submitting");
+        $submitButton.attr("disabled", "disabled");
+        $submitButton.attr("value", "提出中...");
     });
+
+
 }());
