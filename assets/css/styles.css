@@ -31,7 +31,9 @@ body {
 }
 
 /* Default spacing for every element based on golden ratio. */
-*+* {
+header > *+*,
+main > *+*,
+.Corrections > *+* {
     margin-top: 1.618rem;
 }
 
@@ -106,12 +108,25 @@ footer > p {
 /* End Correct Form */
 
 /* Start Corrections */
+.Corrections {
+    padding: 0 14px;    
+}
 
 .Corrections--title {
     color: #23A087;
     display: block;
     border-bottom: 1px solid #C1CCCA;
     padding-bottom: 0.618rem;
+}
+
+.Correction--number {
+    color: #23A087;
+    font-family: "Arial", sans-serif;
+}
+
+.Correction--message {
+    margin-top: 0.618rem;
+    color: #6B7073;
 }
 /* End Corrections */
 
