@@ -1,9 +1,13 @@
 
 (function () {
 
-    var myFirebaseRef = new Firebase("https://correctmylanguage.firebaseio.com/");
-    var corrections = myFirebaseRef.child("corrections");
+    var currentURL = window.location.href,
+        currentURLSplit = currentURL.split("/");
+        videoId = currentURLSplit[currentURLSplit.length - 2];
 
+    var myFirebaseRef = new Firebase("https://correctmylanguage.firebaseio.com/"),
+        videoRef = myFirebaseRef.child(videoId);
+        
     // Authenticate the user anonymously
     myFirebaseRef.authAnonymously(function(error, authData) {
         if (error) {
