@@ -105,6 +105,16 @@ footer > p {
 }
 /* End Correct Form */
 
+/* Start Corrections */
+
+.Corrections--title {
+    color: #23A087;
+    display: block;
+    border-bottom: 1px solid #C1CCCA;
+    padding-bottom: 0.618rem;
+}
+/* End Corrections */
+
 /* Multiple Styles */
 .button {
     /* Reset */
