@@ -1,0 +1,57 @@
+<!doctype html>
+<html class="no-js" lang="ja">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>correctmylanguage</title>
+        <meta name="description" content="Language corrections by natives.">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <!-- Place favicon.ico in the root directory -->
+        <link rel="stylesheet" href="assets/css/reboot.css">
+        <link rel="stylesheet" href="assets/css/styles.css">
+
+        <script>
+        /* Some kind of CSS fix to make up for a bug. */
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+          var msViewportStyle = document.createElement('style')
+          msViewportStyle.appendChild(
+            document.createTextNode(
+              '@-ms-viewport{width:auto!important}'
+            )
+          )
+          document.querySelector('head').appendChild(msViewportStyle)
+        }
+        </script>
+        
+        <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
+    </head>
+    <body>
+        <!--[if lt IE 8]>
+            <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+        <![endif]-->
+
+        <header role="header">
+            <h1 class="logo" lang="en">correctmylanguage</h1>
+            <h2 class="message">もし日本語を間違えったら、もっと自然な言い方があったら、是非直していただきたいと思います。よろしくお願いします。</h2>
+        </header>
+
+        <main role="main">
+            <div class="video">
+                <iframe width="560" height="315" src="https://www.youtube.com/embed/7s4CpxN4Otg" frameborder="0" allowfullscreen></iframe>
+            </div>
+
+            <div class="correctForm">
+                <form class="correctForm--form js-correct-form">
+                    <textarea class="correctForm--textArea js-correctform-textarea" placeholder="反応を書き" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
+                    <p hidden class="thankYouMessage">ありがとうございます。直しをメールに送られました。</p>
+                    <input class="button correctForm--callToAction js-correctform-submitbutton" value="提出" type="submit">
+                </form>
+            </div>
+        </main>
+
+        <script src="assets/js/vendor/jquery-2.2.1.min.js"></script>
+        <script src="assets/js/vendor/autosize.min.js"></script>
+        <script src="assets/js/main.js"></script>
+
+    </body>
+</html>
