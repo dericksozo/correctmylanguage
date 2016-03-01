@@ -6,6 +6,9 @@ body {
     font-family: YuGothic, 'Yu Gothic', "游ゴシック体", "游ゴシック", "ヒラギノ角ゴ Pro W3", "Hiragino Kaku Gothic Pro", "メイリオ", Meiryo, "ＭＳ Ｐゴシック", Osaka, "MS PGothic", Arial, Helvetica, Verdana, sans-serif;
     line-height: 1.266;
     font-size: 100%;
+
+    padding-top: 1.618rem;
+    padding-bottom: 1.618rem;
 }
 
 ::-webkit-input-placeholder { /* WebKit, Blink, Edge */
@@ -34,6 +37,10 @@ body {
 header > *+*,
 main > *+*,
 .Corrections > *+* {
+    margin-top: 1.618rem;
+}
+
+main {
     margin-top: 1.618rem;
 }
 
@@ -109,7 +116,7 @@ footer > p {
 
 /* Start Corrections */
 .Corrections {
-    padding: 0 14px;    
+    padding: 0 14px;
 }
 
 .Corrections--title {

@@ -1,4 +1,40 @@
 
+// Simple JavaScript Templating
+// John Resig - http://ejohn.org/ - MIT Licensed
+(function(){
+  var cache = {};
+
+  this.tmpl = function tmpl(str, data){
+    // Figure out if we're getting a template, or if we need to
+    // load the template - and be sure to cache the result.
+    var fn = !/\W/.test(str) ?
+      cache[str] = cache[str] ||
+        tmpl(document.getElementById(str).innerHTML) :
+
+      // Generate a reusable function that will serve as a template
+      // generator (and which will be cached).
+      new Function("obj",
+        "var p=[],print=function(){p.push.apply(p,arguments);};" +
+
+        // Introduce the data as local variables using with(){}
+        "with(obj){p.push('" +
+
+        // Convert the template into pure JavaScript
+        str
+          .replace(/[\r\t\n]/g, " ")
+          .split("<%").join("\t")
+          .replace(/((^|%>)[^\t]*)'/g, "$1\r")
+          .replace(/\t=(.*?)%>/g, "',$1,'")
+          .split("\t").join("');")
+          .split("%>").join("p.push('")
+          .split("\r").join("\\'")
+      + "');}return p.join('');");
+
+    // Provide some basic currying to the user
+    return data ? fn( data ) : fn;
+  };
+})();
+
 (function () {
 
     var currentURL = window.location.href,
@@ -15,6 +51,37 @@
         } else {
             console.log("Authenticated successfully with payload:", authData);
         }
+    });
+
+    // Display the messages.
+    // Attach an asynchronous callback to read the data at our posts reference
+    videoRef.on("value", function(snapshot) {
+        var records = snapshot.val(),
+            size = Object.keys(records).length,
+            $corrections = $(".js-corrections");
+
+            var record,
+                dataObject = {};
+        if (size <= 0) {
+            // Render it differently.
+        } else {
+
+            for (record in records) {
+                if (records.hasOwnProperty(record)) {
+                    /* Can this be made faster using the shadow dom? */;
+
+                    console.log("What's records[record]?", records[record]);
+
+                    dataObject.message = records[record].message;
+
+                    $corrections.append(tmpl("correction_template"), dataObject);
+                }
+            }
+
+        }
+
+    }, function (errorObject) {
+        console.log("The read failed: " + errorObject.code);
     });
 
     // Set up autosize on the textarea.
@@ -61,6 +128,4 @@
 
     });
 
-    // Display the messages.
-    
 }());

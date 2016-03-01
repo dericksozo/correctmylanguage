@@ -48,20 +48,21 @@
                 </form>
             </div>
 
-            <div class="Corrections">
+            <div class="Corrections js-corrections">
                 <div class="Corrections--title">直し</div>
-                <div class="Correction">
-                    <div class="Correction--number">1.</div>
-                    <div class="Correction--message">多分不思議な方法よりも、変わった方法の方が自然かな？</div>
-                </div>
             </div>
         </main>
 
-        <!-- <script src="/assets/js/vendor/jquery-2.2.1.min.js"></script>
+        <script src="/assets/js/vendor/jquery-2.2.1.min.js"></script>
         <script src="/assets/js/vendor/autosize.min.js"></script>
-        <script src="/assets/js/main.js"></script> -->
+        <script src="/assets/js/main.js"></script>
 
         <!-- Templates -->
-        <script type="text/html" id="item_tmpl"></script>
+        <script type="text/html" id="correction_template">
+            <div class="Correction">
+                <div class="Correction--message"><%= message %></div>
+            </div>
+        </script>
+
     </body>
 </html>
