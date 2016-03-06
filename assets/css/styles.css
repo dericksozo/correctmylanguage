@@ -112,6 +112,15 @@ footer > p {
 .correctForm--callToAction {
     float: right;
 }
+
+/* States */
+.correctForm[data-state~="empty"] .correctForm--callToAction {
+    display: none;
+}
+
+.correctionForm[data-state~="showCallToAction"] .correctForm--callToAction {
+    display: block;
+}
 /* End Correct Form */
 
 /* Start Corrections */

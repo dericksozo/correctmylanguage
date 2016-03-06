@@ -16,9 +16,11 @@
         }
     });
 
-    // Display the messages.
-    // Attach an asynchronous callback to read the data at our posts reference
-    videoRef.on("value", function(snapshot) {
+    // Set up autosize on the textarea.
+    autosize($(".js-correctform-textarea"));
+
+    // Load all messages for the current video id on page load.
+    videoRef.once("value", function(snapshot) {
         var records = snapshot.val(),
             size,
             $corrections = $(".js-corrections");
@@ -56,12 +58,23 @@
         console.log("The read failed: " + errorObject.code);
     });
 
-    // Set up autosize on the textarea.
-    autosize($(".js-correctform-textarea"));
-
     // TODO: Add a check to the form to see if there is at least one character in there and don't show the form button unelss there is.
+
+    $(".js-correctform-textarea").keyup(function (e) {
+        e.preventDefault();
+
+        var value = $(this).val();
+
+        // Only display the submit button if there's at least 1 character in there.
+        if (value.length >= 1) {
+            $(".js-correctform").attr("data-state", "showCallToAction");
+        } else {
+            $(".js-correctform").attr("data-state", "empty");
+        }
+    });
+
     // Submitting the form.
-    $(".js-correct-form").submit(function (e) {
+    $(".js-correctform-form").submit(function (e) {
         e.preventDefault();
         var $submitButton = $(".js-correctform-submitbutton");
 
