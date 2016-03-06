@@ -55,12 +55,13 @@
 
         <script src="/assets/js/vendor/jquery-2.2.1.min.js"></script>
         <script src="/assets/js/vendor/autosize.min.js"></script>
+        <script src="/assets/js/vendor/handlebars-v4.0.5.js"></script>
         <script src="/assets/js/main.js"></script>
 
         <!-- Templates -->
-        <script type="text/html" id="correction_template">
+        <script id="correction-template" type="text/x-handlebars-template">
             <div class="Correction">
-                <div class="Correction--message"><%= message %></div>
+                <div class="Correction--message">{{message}}</div>
             </div>
         </script>
 
