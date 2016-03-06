@@ -135,6 +135,13 @@ footer > p {
     margin-top: 0.618rem;
     color: #6B7073;
 }
+
+/* States */
+.Corrections[data-state~="loading"] .Correction:not(.Correction-loading),
+.Corrections[data-state~="empty"] .Correction:not(.Correction-empty) {
+    display: none;
+}
+
 /* End Corrections */
 
 /* Multiple Styles */

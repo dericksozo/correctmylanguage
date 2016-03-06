@@ -20,15 +20,21 @@
     // Attach an asynchronous callback to read the data at our posts reference
     videoRef.on("value", function(snapshot) {
         var records = snapshot.val(),
-            size = Object.keys(records).length,
+            size,
             $corrections = $(".js-corrections");
 
             var record;
 
-            console.log("What's the snapshot value?", snapshot.val());
+        // Checking if there are no comments.
+        if (records === undefined || records === null) {
+            size = 0;
+        } else {
+            size = Object.keys(records).length;
+        }
 
         if (size <= 0) {
             // Render it differently.
+            $corrections.attr("data-state", "empty");
         } else {
 
             for (record in records) {
@@ -43,6 +49,7 @@
                 }
             }
 
+            $corrections.attr("data-state", "loaded");
         }
 
     }, function (errorObject) {
@@ -72,6 +79,7 @@
             videoRef.push({
                 correction: $(".js-correctform-textarea").val(),
                 author: authData.uid,
+                timestamp: Date.now()
             }, function (error) {
                 if (error) {
                     console.log("What was the error?", error);

@@ -48,8 +48,14 @@
                 </form>
             </div>
 
-            <div class="Corrections js-corrections">
+            <div class="Corrections js-corrections" data-state="loading">
                 <div class="Corrections--title">直し</div>
+                <div class="Correction Correction-loading">
+                    <div class="Correction--message">Corrections are loading...</div>
+                </div>
+                <div class="Correction Correction-empty">
+                    <div class="Correction--message">No corrections yet, be the first?</div>
+                </div>
             </div>
         </main>
 
