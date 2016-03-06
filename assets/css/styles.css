@@ -197,7 +197,9 @@ footer > p {
 
 /* States */
 .Corrections[data-state~="loading"] .Correction:not(.Correction-loading),
-.Corrections[data-state~="empty"] .Correction:not(.Correction-empty) {
+.Corrections[data-state~="empty"] .Correction:not(.Correction-empty),
+.Corrections[data-state~="loaded"] .Correction.Correction-loading,
+.Corrections[data-state~="loaded"] .Correction.Correction-empty {
     display: none;
 }
 
