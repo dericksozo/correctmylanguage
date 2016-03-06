@@ -7,6 +7,8 @@
     var myFirebaseRef = new Firebase("https://correctmylanguage.firebaseio.com/"),
         videoRef = myFirebaseRef.child(videoId);
 
+    var AFTER_INITIAL_RENDER = false; // Keeps track of whether the corrections that already exist have been rendered or not.
+
     // Authenticate the user anonymously
     myFirebaseRef.authAnonymously(function(error, authData) {
         if (error) {
@@ -23,9 +25,8 @@
     videoRef.once("value", function(snapshot) {
         var records = snapshot.val(),
             size,
-            $corrections = $(".js-corrections");
-
-            var record;
+            $corrections = $(".js-corrections"),
+            $correctionsContainer = $(".js-corrections-container");
 
         // Checking if there are no comments.
         if (records === undefined || records === null) {
@@ -39,26 +40,32 @@
             $corrections.attr("data-state", "empty");
         } else {
 
+            $correctionsContainer.empty();
+
+            var number = 1;
+
             for (record in records) {
                 if (records.hasOwnProperty(record)) {
 
                     var source   = $("#correction-template").html();
                     var template = Handlebars.compile(source);
                     var context = {
-                        message: records[record].correction
+                        message: records[record].correction,
+                        number: number++,
+                        animated: AFTER_INITIAL_RENDER ? true : false
                     };
-                    $corrections.append(template(context));
+
+                    $correctionsContainer.prepend(template(context));
                 }
             }
 
             $corrections.attr("data-state", "loaded");
+            AFTER_INITIAL_RENDER = true;
         }
 
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
     });
-
-    // TODO: Add a check to the form to see if there is at least one character in there and don't show the form button unelss there is.
 
     $(".js-correctform-textarea").keyup(function (e) {
         e.preventDefault();
@@ -92,7 +99,7 @@
             videoRef.push({
                 correction: $(".js-correctform-textarea").val(),
                 author: authData.uid,
-                timestamp: Date.now()
+                timestamp: Firebase.ServerValue.TIMESTAMP
             }, function (error) {
                 if (error) {
                     console.log("What was the error?", error);
@@ -104,6 +111,7 @@
                     $submitButton.attr("value", "提出");
 
                     $(".js-correctform-textarea").val("");
+
                 }
             });
 

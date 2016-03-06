@@ -56,11 +56,13 @@
 
             <div class="Corrections js-corrections" data-state="loading">
                 <div class="Corrections--title">直し</div>
-                <div class="Correction Correction-loading">
-                    <div class="Correction--message">直しは読み込み中・・</div>
-                </div>
-                <div class="Correction Correction-empty">
-                    <div class="Correction--message">直しはまだありません。一番になりますか。</div>
+                <div class="Corrections--correctionsContainer js-corrections-container">
+                    <div class="Correction Correction-loading">
+                        <div class="Correction--message">直しは読み込み中・・</div>
+                    </div>
+                    <div class="Correction Correction-empty">
+                        <div class="Correction--message">直しはまだありません。一番になりますか。</div>
+                    </div>
                 </div>
             </div>
         </main>
@@ -72,7 +74,13 @@
 
         <!-- Templates -->
         <script id="correction-template" type="text/x-handlebars-template">
+
+            {{#if animated}}
+            <div class="Correction Correction-animated">
+            {{else}}
             <div class="Correction">
+            {{/if}}
+                <div class="Correction--number">{{number}}</div>
                 <div class="Correction--message">{{message}}</div>
             </div>
         </script>

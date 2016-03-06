@@ -178,6 +178,14 @@ footer > p {
     padding: 0 14px;
 }
 
+.Correction {
+    margin-top: 1.618rem;
+}
+
+.Correction.Correction-animated {
+    background-color: #000;
+}
+
 .Corrections--title {
     color: #23A087;
     display: block;
