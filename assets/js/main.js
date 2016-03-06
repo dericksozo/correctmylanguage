@@ -10,9 +10,9 @@
     // Authenticate the user anonymously
     myFirebaseRef.authAnonymously(function(error, authData) {
         if (error) {
-            console.log("Login Failed!", error);
+            // Change the state most likely.
         } else {
-            console.log("Authenticated successfully with payload:", authData);
+            $(".js-authentication").attr("data-state", "authenticated");
         }
     });
 

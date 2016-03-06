@@ -40,6 +40,12 @@
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/7s4CpxN4Otg" frameborder="0" allowfullscreen></iframe>
             </div>
 
+            <!-- States: unauthenticated, authenticated -->
+            <div class="Authentication js-authentication" data-state="unauthenticated">
+                <div class="Authentication--state Authentication--state-unauthenticated">認証中・・</div>
+                <div class="Authentication--state Authentication--state-authenticated">匿名認証</div>
+            </div>
+
             <div class="correctForm js-correctform" data-state="empty">
                 <form class="correctForm--form js-correctform-form">
                     <textarea class="correctForm--textArea js-correctform-textarea" placeholder="反応を書き" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false"></textarea>
@@ -51,10 +57,10 @@
             <div class="Corrections js-corrections" data-state="loading">
                 <div class="Corrections--title">直し</div>
                 <div class="Correction Correction-loading">
-                    <div class="Correction--message">Corrections are loading...</div>
+                    <div class="Correction--message">直しは読み込み中・・</div>
                 </div>
                 <div class="Correction Correction-empty">
-                    <div class="Correction--message">No corrections yet, be the first?</div>
+                    <div class="Correction--message">直しはまだありません。一番になりますか。</div>
                 </div>
             </div>
         </main>

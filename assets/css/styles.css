@@ -86,6 +86,55 @@ footer > p {
 }
 /* End Video */
 
+/* Start Authentication */
+.Authentication {
+    padding: 0 14px;
+}
+
+/* Default styles / Unauthenticated */
+.Authentication--state {
+    font-size: 0.618rem;
+    line-height: 1.26;
+    color: #80878B;
+
+    position: relative;
+
+    padding-left: 0.618rem;
+}
+
+/* The dot. */
+.Authentication--state::before {
+    content: " ";
+    display: block;
+
+    width: 0.3819rem;
+    height: 0.3819rem;
+    border-radius: 50%;
+
+    position: absolute;
+    left: 0;
+    top: 4px;
+
+    background-color: #6F7776;
+}
+
+/* Authenticated */
+.Authentication--state.Authentication--state-authenticated {
+    color: #19C19F;
+}
+
+.Authentication--state.Authentication--state-authenticated::before {
+    background-color: #19C19F;
+    box-shadow: 0px 0px 1px #19C19F;
+}
+
+/* States */
+.Authentication[data-state~="unauthenticated"] .Authentication--state:not(.Authentication--state-unauthenticated),
+.Authentication[data-state~="authenticated"] .Authentication--state:not(.Authentication--state-authenticated){
+    display: none;
+}
+/* End Authentication */
+
 /* Correct Form */
 
 .correctForm {
