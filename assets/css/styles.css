@@ -88,12 +88,13 @@ footer > p {
 
 /* Home page Videos */
 
-.Videos--title {
-    padding: 0 14px;
-}
-
 .Video {
     position: relative;
+}
+
+.Videos--title {
+    padding: 0 14px;
+    color: #6B7073;
 }
 
 .Video--title {
