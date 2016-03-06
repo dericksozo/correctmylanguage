@@ -140,6 +140,7 @@ footer > p {
 .correctForm {
     overflow: hidden; /* Clearfix */
     clear: both;
+    margin-top: 0.618rem;
 }
 
 .correctForm--textArea {
