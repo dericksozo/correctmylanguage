@@ -7,7 +7,12 @@
     var myFirebaseRef = new Firebase("https://correctmylanguage.firebaseio.com/"),
         videoRef = myFirebaseRef.child(videoId);
 
-    var AFTER_INITIAL_RENDER = false; // Keeps track of whether the corrections that already exist have been rendered or not.
+    var AFTER_SUBMITTION = false, // Keeps track of whether the corrections that already exist have been rendered or not.
+        AFTER_INITIAL_RENDER = true;
+
+    var $corrections = $(".js-corrections");
+
+    var correctionNumberCount = 1;
 
     // Authenticate the user anonymously
     myFirebaseRef.authAnonymously(function(error, authData) {
@@ -21,47 +26,39 @@
     // Set up autosize on the textarea.
     autosize($(".js-correctform-textarea"));
 
-    // Load all messages for the current video id on page load.
-    videoRef.once("value", function(snapshot) {
-        var records = snapshot.val(),
-            size,
-            $corrections = $(".js-corrections"),
-            $correctionsContainer = $(".js-corrections-container");
+    videoRef.once('value', function(snapshot) {
+        var exists = (snapshot.val() !== null);
 
-        // Checking if there are no comments.
-        if (records === undefined || records === null) {
-            size = 0;
-        } else {
-            size = Object.keys(records).length;
-        }
-
-        if (size <= 0) {
-            // Render it differently.
+        if ( ! exists) {
             $corrections.attr("data-state", "empty");
-        } else {
+        }
+    });
 
+    // Load all messages for the current video id on page load.
+    videoRef.on("child_added", function(snapshot) {
+
+        var record = snapshot.val();
+
+        var $correctionsContainer = $(".js-corrections-container");
+
+        if ( ! AFTER_INITIAL_RENDER) {
             $correctionsContainer.empty();
-
-            var number = 1;
-
-            for (record in records) {
-                if (records.hasOwnProperty(record)) {
-
-                    var source   = $("#correction-template").html();
-                    var template = Handlebars.compile(source);
-                    var context = {
-                        message: records[record].correction,
-                        number: number++,
-                        animated: AFTER_INITIAL_RENDER ? true : false
-                    };
-
-                    $correctionsContainer.prepend(template(context));
-                }
-            }
-
-            $corrections.attr("data-state", "loaded");
             AFTER_INITIAL_RENDER = true;
         }
+
+        var source   = $("#correction-template").html();
+        var template = Handlebars.compile(source);
+        var context = {
+            message: record.correction,
+            number: correctionNumberCount++,
+            animated: AFTER_SUBMITTION ? true : false
+        };
+
+        $correctionsContainer.prepend(template(context));
+
+        $corrections.attr("data-state", "loaded");
+
+        AFTER_SUBMITTION = false;
 
     }, function (errorObject) {
         console.log("The read failed: " + errorObject.code);
@@ -95,6 +92,8 @@
 
         if (authData) {
 
+            AFTER_SUBMITTION = true;
+            
             /* Save the correction into firebase. */
             videoRef.push({
                 correction: $(".js-correctform-textarea").val(),

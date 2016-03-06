@@ -7,8 +7,22 @@
         <meta name="description" content="Language corrections by natives.">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Place favicon.ico in the root directory -->
-        <link rel="stylesheet" href="assets/css/reboot.css">
-        <link rel="stylesheet" href="assets/css/styles.css">
+        <link rel="stylesheet" href="/assets/css/reboot.css">
+        <link rel="stylesheet" href="/assets/css/styles.css">
+
+        <script>
+        /* Some kind of CSS fix to make up for a bug. */
+        if (navigator.userAgent.match(/IEMobile\/10\.0/)) {
+          var msViewportStyle = document.createElement('style')
+          msViewportStyle.appendChild(
+            document.createTextNode(
+              '@-ms-viewport{width:auto!important}'
+            )
+          )
+          document.querySelector('head').appendChild(msViewportStyle)
+        }
+        </script>
+
         <script src="https://cdn.firebase.com/js/client/2.4.1/firebase.js"></script>
     </head>
     <body>
@@ -16,9 +30,29 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
-        <h1>Videos</h1>
-        <ul>
-            <li><a href="/7s4CpxN4Otg/">7s4CpxN4Otg</a></li>
-        </ul>
+        <header role="header">
+            <h1 class="logo" lang="en">correctmylanguage</h1>
+            <h2 class="message">もし日本語を間違えったら、もっと自然な言い方があったら、是非直していただきたいと思います。よろしくお願いします。</h2>
+        </header>
+
+        <main role="main">
+
+            <div class="Videos">
+                <div class="Videos--title">動画</div>
+                <div class="Videos--videosContainer">
+                    <div class="Video">
+                        <a href="/MfhG3g90B9o/index.html">
+                            <div class="Video--image" role="presentation">
+                                <img src="http://img.youtube.com/vi/MfhG3g90B9o/maxresdefault.jpg">
+                            </div>
+                            <div class="Video--title">
+                                英語は言語としてよりも、いくつか日本社会の価値観を表す文化的な概念として認められていると思います 
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </main>
+
     </body>
 </html>
